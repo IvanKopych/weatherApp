@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "nerdzinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nerdzlab/NerdzInject",
+      "state" : {
+        "revision" : "195cbaa0413bb05a5c46ad36a4c5ecb1f617e049",
+        "version" : "1.1.2"
+      }
+    }
+  ],
+  "version" : 2
+}

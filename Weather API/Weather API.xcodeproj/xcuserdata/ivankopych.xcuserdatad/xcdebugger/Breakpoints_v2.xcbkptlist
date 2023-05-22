@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "FECC7DDF-B1F1-4F12-920F-D9AF691AB038"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA412BC4-A002-43F6-8A90-4CC7A4B135AF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weather API/Presentation Layer/CurrentWeatherScreen/CurrentWeatherViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AA412BC4-A002-43F6-8A90-4CC7A4B135AF - 88361dfc2334914a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async -&gt; () in Weather_API.CurrentWeatherViewModel.fetchData() -&gt; ()"
+                  moduleName = "Weather API"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivankopych/Documents/MyProjects/Weather%20API/Weather%20API/Weather%20API/Presentation%20Layer/CurrentWeatherScreen/CurrentWeatherViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "AA412BC4-A002-43F6-8A90-4CC7A4B135AF - 6ec73b77c2710428"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for closure #1 @Sendable () async -&gt; () in Weather_API.CurrentWeatherViewModel.fetchData() -&gt; ()"
+                  moduleName = "Weather API"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivankopych/Documents/MyProjects/Weather%20API/Weather%20API/Weather%20API/Presentation%20Layer/CurrentWeatherScreen/CurrentWeatherViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
