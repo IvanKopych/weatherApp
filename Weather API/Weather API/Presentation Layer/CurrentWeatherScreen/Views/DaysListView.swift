@@ -13,8 +13,9 @@ struct DaysListView: View {
     var body: some View {
         List {
             ForEach(dailyForecast, id: \.id) { item in
-                DayView(forecast: item)
-
+                NavigationLink(destination: DetailScreen(dayForecast: item)) {
+                    DayView(forecast: item)
+                }
             }.listRowInsets(EdgeInsets(
                 top: 0, leading: 10, bottom: 10, trailing: 10))
         }

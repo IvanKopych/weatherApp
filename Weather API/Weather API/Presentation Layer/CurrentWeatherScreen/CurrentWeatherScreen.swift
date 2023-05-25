@@ -11,12 +11,13 @@ import Combine
 struct CurrentWeatherScreen: View {
     
     // MARK: - State -
-
+    
     @StateObject var viewModel = CurrentWeatherViewModel()
     @State var presentingModal = false
+    @State var path = NavigationPath()
     
     // MARK: - Properties(private) -
-
+    
     private var temperature: String {
         String(format: "%.0f", viewModel.forecast?.current.temp ?? 0) + " C°"
     }
@@ -48,89 +49,90 @@ struct CurrentWeatherScreen: View {
     }
     
     // MARK: - Body -
-
+    
     var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Text(viewModel.cityName ?? "")
-                    .font(.title)
+        NavigationView {
+            VStack(spacing: 20) {
+                HStack {
+                    Text(viewModel.cityName ?? "")
+                        .font(.title)
+                    Spacer()
+                    
+                    Button(action: {
+                        self.presentingModal = true
+                    }
+                    ) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    .sheet(isPresented: $presentingModal) { SearchScreen() }
+                }
+                .padding()
+                
+                HStack {
+                    Text(temperature)
+                        .font(.system(size: 40).bold())
+                        .foregroundColor(.cyan)
+                    if let currentDayForecast = viewModel.forecast?.daily.first {
+                        WeatherIconView(forecast: currentDayForecast).body
+                            .frame(height: 40)
+                            .foregroundColor(.cyan)
+                    }
+                }
+                VStack {
+                    HStack {
+                        Image(systemName: "wind")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 30)
+                        Text(vinSpeed)
+                            .font(.title3)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    
+                    HStack {
+                        Image(systemName: "humidity")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 30)
+                        Text(humidity)
+                            .font(.title3)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    
+                    HStack {
+                        Image(systemName: "sun.haze")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 30)
+                        Text(sunRise)
+                            .font(.title3)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    
+                    HStack {
+                        Image(systemName: "moon.haze")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 30)
+                        Text(sunSet)
+                            .font(.title3)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                }
+                
                 Spacer()
                 
-                Button(action: {
-                    self.presentingModal = true
-                }
-                ) {
-                    Image(systemName: "magnifyingglass")
-                }
-                .sheet(isPresented: $presentingModal) { SearchScreen() }
+                DaysListView(dailyForecast: viewModel.forecast?.daily ?? [])
             }
-            .padding()
             
-            HStack {
-                Text(temperature)
-                    .font(.system(size: 40).bold())
-                    .foregroundColor(.cyan)
-                if let currentDayForecast = viewModel.forecast?.daily.first {
-                    WeatherIconView(forecast: currentDayForecast).body
-                        .frame(height: 40)
-                        .foregroundColor(.cyan)
-                }
+            .onAppear {
+                viewModel.getLocationData()
+                viewModel.binOn()
             }
-           
-            VStack {
-                HStack {
-                    Image(systemName: "wind")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 30)
-                    Text(vinSpeed)
-                        .font(.title3)
-                    Spacer()
-                }
-                .padding(.leading)
-            
-                HStack {
-                    Image(systemName: "humidity")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 30)
-                    Text(humidity)
-                        .font(.title3)
-                    Spacer()
-                }
-                .padding(.leading)
-                
-                HStack {
-                    Image(systemName: "sun.haze")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 30)
-                    Text(sunRise)
-                        .font(.title3)
-                    Spacer()
-                }
-                .padding(.leading)
-                
-                HStack {
-                    Image(systemName: "moon.haze")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 30)
-                    Text(sunSet)
-                        .font(.title3)
-                    Spacer()
-                }
-                .padding(.leading)
-            }
-        
-            Spacer()
-            
-            DaysListView(dailyForecast: viewModel.forecast?.daily ?? [])
-            
-        }
-        .onAppear {
-            viewModel.getLocationData()
-            viewModel.binOn()
         }
     }
 }

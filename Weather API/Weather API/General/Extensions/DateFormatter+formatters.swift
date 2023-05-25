@@ -17,6 +17,15 @@ extension DateFormatter {
         return formatter
     }()
     
+    static let dayFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "d MMMM, EEEE"
+        formatter.timeZone = .current
+        
+        return formatter
+    }()
+    
     static let hoursFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
